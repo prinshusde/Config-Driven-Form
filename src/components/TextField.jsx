@@ -9,9 +9,10 @@ const TextField = ({
   readonly = false,
   index,
   onChange,
+  type,
 }) => {
   function handleChange(event) {
-    onChange({ id, value: event.target.value, index });
+    onChange({ id, value: event.target.value, index, type });
   }
 
   return (

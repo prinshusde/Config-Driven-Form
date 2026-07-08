@@ -62,8 +62,18 @@ function App() {
   // input will be handled by app
   const [inputs, setInputs] = useState(structuredClone(Inputs));
 
-  const onInputChange = ({ id, index, value, checked }) => {
+  const onInputChange = ({ id, index, value, checked, type }) => {
+    const oldState = structuredClone(inputs);
+
+    if (type === "checkbox") {
+      oldState[index].checked = checked;
+    }
+
+    if (type === "text") {
+      oldState[index].value = value;
+    }
     console.log({ id, value, index, checked });
+    setInputs(oldState);
   };
 
   return (

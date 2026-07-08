@@ -9,10 +9,11 @@ const Checkbox = ({
   readonly = false,
   index,
   onChange,
+  type,
 }) => {
   //   const [checked, setChecked] = useState(false);
   function handleChange() {
-    onChange({ id, value, checked: !checked, index });
+    onChange({ id, value, checked: !checked, index, type });
   }
   return (
     <div>
