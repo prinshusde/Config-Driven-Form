@@ -62,11 +62,15 @@ function App() {
   // input will be handled by app
   const [inputs, setInputs] = useState(structuredClone(Inputs));
 
+  const onInputChange = ({ id, index, value, checked }) => {
+    console.log({ id, value, index, checked });
+  };
+
   return (
     <>
       <div className="">
         <div className="text-center text-2xl font-bold">Hello Config Form</div>
-        <FormWrapper inputs={inputs} />
+        <FormWrapper inputs={inputs} onInputChange={onInputChange} />
       </div>
     </>
   );

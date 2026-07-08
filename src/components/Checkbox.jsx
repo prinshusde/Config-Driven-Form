@@ -1,14 +1,34 @@
-import { useState } from "react";
-
-const Checkbox = () => {
-  const [checked, setChecked] = useState(false);
+const Checkbox = ({
+  label = "",
+  name = "",
+  id = "",
+  error = "",
+  checked,
+  value,
+  disabled = false,
+  readonly = false,
+  index,
+  onChange,
+}) => {
+  //   const [checked, setChecked] = useState(false);
+  function handleChange() {
+    onChange({ id, value, checked: !checked, index });
+  }
   return (
-    <input
-      type="checkbox"
-      name="test"
-      id="test"
-      onChange={() => setChecked(!checked)}
-    />
+    <div>
+      <input
+        type="checkbox"
+        name={name}
+        id={id}
+        value={value}
+        checked={checked}
+        disabled={disabled}
+        readOnly={readonly}
+        error={error}
+        onChange={handleChange}
+      />
+      <label htmlFor={id}>{label}</label>
+    </div>
   );
 };
 

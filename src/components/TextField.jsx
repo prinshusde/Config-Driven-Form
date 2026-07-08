@@ -1,12 +1,34 @@
-const TextField = () => {
+const TextField = ({
+  label = "",
+  placeholder = "",
+  value = "",
+  name = "",
+  id = "",
+  error = "",
+  disabled = false,
+  readonly = false,
+  index,
+  onChange,
+}) => {
+  function handleChange(event) {
+    onChange({ id, value: event.target.value, index });
+  }
+
   return (
-    <input
-      className="border"
-      type="text"
-      name="test"
-      id="test"
-      placeholder="Test"
-    />
+    <div>
+      <label htmlFor={id}>{label}</label>
+      <input
+        id={id}
+        name={name}
+        value={value}
+        error={error}
+        disabled={disabled}
+        readOnly={readonly}
+        type="text"
+        placeholder={placeholder}
+        onChange={handleChange}
+      />
+    </div>
   );
 };
 
