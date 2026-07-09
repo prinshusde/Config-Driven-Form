@@ -25,7 +25,7 @@ const Inputs = [
     readonly: false,
   },
   {
-    type: "email",
+    type: "text",
     label: "Email",
     placeholder: "Enter your email",
     value: "",
@@ -76,11 +76,24 @@ function App() {
     setInputs(oldState);
   };
 
+  function handleCancel(){
+     setInputs(structuredClone(Inputs))
+  }
+
+  function handleSubmit(){
+       console.log("form: ",inputs)
+  }
+
   return (
     <>
       <div className="">
         <div className="text-center text-2xl font-bold">Hello Config Form</div>
-        <FormWrapper inputs={inputs} onInputChange={onInputChange} />
+        <FormWrapper
+         inputs={inputs}
+         onInputChange={onInputChange}
+         onCancel={handleCancel} 
+         onSubmit={handleSubmit}
+           />
       </div>
     </>
   );

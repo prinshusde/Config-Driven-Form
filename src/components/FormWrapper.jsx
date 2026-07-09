@@ -1,9 +1,15 @@
 import Checkbox from "./Checkbox";
 import TextField from "./TextField";
 
-const FormWrapper = ({ inputs, onInputChange }) => {
+const FormWrapper = ({ inputs, onInputChange, onCancel, onSubmit }) => {
+
+  function handleSubmit(e){
+    e.preventDefault()
+    onSubmit()
+  }
+
   return (
-    <div className="flex flex-col gap-4 items-start border w-1/4 p-4">
+    <form className="flex flex-col gap-4 items-start border w-1/4 p-4" onSubmit={handleSubmit}>
       {inputs.map((input, index) => {
         if (input.type === "checkbox") {
           return (
@@ -25,7 +31,11 @@ const FormWrapper = ({ inputs, onInputChange }) => {
           />
         );
       })}
-    </div>
+      <div className="flex gap-2">
+        <button onClick={onCancel} className="border px-3 py-1 rounded-md cursor-pointer">Cancel</button>
+        <button type="submit" className="border px-3 py-1 rounded-md cursor-pointer">Submit</button>
+      </div>
+    </form>
   );
 };
 
