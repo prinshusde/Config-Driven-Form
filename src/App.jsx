@@ -81,7 +81,19 @@ function App() {
   }
 
   function handleSubmit(){
+    const params={}
+
+    inputs.forEach((input)=>{
+        if(input.type=== "checkbox"){
+            if(input.checked){
+               params[input.name]=input.checked
+            }
+        }else{
+            params[input.name]=input.value
+        }
+    })
        console.log("form: ",inputs)
+       console.log("params: ",params)
   }
 
   return (
