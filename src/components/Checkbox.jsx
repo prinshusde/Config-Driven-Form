@@ -12,9 +12,12 @@ const Checkbox = ({
   type,
 }) => {
   //   const [checked, setChecked] = useState(false);
-  function handleChange() {
-    onChange({ id, value, checked: !checked, index, type });
-  }
+  // function handleChange() {
+  //   onChange({ id, value, checked: !checked, index, type });
+  // }
+  function handleChange(event) {
+  onChange({ index, value: event.target.checked });
+}
   return (
     <div>
       <input

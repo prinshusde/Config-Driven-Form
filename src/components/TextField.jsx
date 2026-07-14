@@ -11,9 +11,13 @@ const TextField = ({
   onChange,
   type,
 }) => {
+  // function handleChange(event) {
+  //   onChange({ id, value: event.target.value, index, type });
+  // }
+
   function handleChange(event) {
-    onChange({ id, value: event.target.value, index, type });
-  }
+  onChange({ index, value: event.target.value });
+}
 
   return (
     <div>

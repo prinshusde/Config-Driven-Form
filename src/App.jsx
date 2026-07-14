@@ -127,39 +127,56 @@ function App() {
   // input will be handled by app
   const [inputs, setInputs] = useState(structuredClone(Inputs));
 
-  const onInputChange = ({ id, index, value, checked, type }) => {
-    const oldState = structuredClone(inputs);
+  // const onInputChange = ({ id, index, value, checked, type }) => {
+  //   const oldState = structuredClone(inputs);
 
-    if (type === "checkbox") {
-      oldState[index].checked = checked;
-    }
+  //   if (type === "checkbox") {
+  //     oldState[index].checked = checked;
+  //   }
 
-    if (type === "text") {
-      oldState[index].value = value;
-    }
-    console.log({ id, value, index, checked });
-    setInputs(oldState);
-  };
+  //   if (type === "text") {
+  //     oldState[index].value = value;
+  //   }
+  //   console.log({ id, value, index, checked });
+  //   setInputs(oldState);
+  // };
+
+  const onInputChange = ({ index, value }) => {
+  setInputs((prev) => {
+    const next = [...prev];
+    next[index] = { ...next[index], value };
+    return next;
+  });
+};
 
   function handleCancel(){
      setInputs(structuredClone(Inputs))
   }
 
-  function handleSubmit(){
-    const params={}
+  // function handleSubmit(){
+  //   const params={}
 
-    inputs.forEach((input)=>{
-        if(input.type=== "checkbox"){
-            if(input.checked){
-               params[input.name]=input.checked
-            }
-        }else{
-            params[input.name]=input.value
-        }
-    })
-       console.log("form: ",inputs)
-       console.log("params: ",params)
-  }
+  //   inputs.forEach((input)=>{
+  //       if(input.type=== "checkbox"){
+  //           if(input.checked){
+  //              params[input.name]=input.checked
+  //           }
+  //       }else{
+  //           params[input.name]=input.value
+  //       }
+  //   })
+  //      console.log("form: ",inputs)
+  //      console.log("params: ",params)
+  // }
+
+  function handleSubmit() {
+  const params = {};
+  inputs.forEach((input) => {
+    params[input.name] = input.value;
+  });
+   console.log("form: ",inputs)
+  console.log("params: ", params);
+}
 
   return (
     <>
